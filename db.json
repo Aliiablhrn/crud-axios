@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "title": "first",
+      "price": "1000",
+      "desc": "first product",
+      "image": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+      "id": 1
+    },
+    {
+      "title": "second",
+      "price": "200",
+      "desc": "second product",
+      "image": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+      "id": 2
+    },
+    {
+      "title": "product",
+      "price": "300",
+      "desc": "product",
+      "image": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+      "id": 3
+    }
+  ]
+}

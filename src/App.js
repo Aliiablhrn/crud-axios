@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AddProduct from './components/addProduct/AddProduct';
+import EditProduct from './components/editProduct/EditProduct';
+import ProductList from './components/productList/ProductList';
 
-function App() {
+const App = () => {
+
+  const API = "http://localhost:8000/products"
+  const [product, setProduct] = useState([])
+
+  async function readProduct(){
+    const {data} = await axios(API)
+    setProduct(data)
+  }
+
+  async function createProduct(newProduct){
+    await axios.post(API, newProduct)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={
+          <ProductList readProduct={readProduct} product={product}/>
+        } />
+        <Route path='/add' element={<AddProduct createProduct={createProduct}/>} />
+        <Route path='/edit/:id' element={<EditProduct />} />
+      </Routes>
+    </BrowserRouter>
+    </>
   );
-}
+};
 
 export default App;
